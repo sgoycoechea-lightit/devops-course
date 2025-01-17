@@ -22,11 +22,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             let a = 1;
-
-            
-      # github.rest.pulls.update({
-      #   title: 'This title was set by a GitHub Action!'
-      # })
+            github.rest.pulls.update({
+              title: 'This title was set by a GitHub Action!'
+            })
 
       # - uses: gr2m/create-or-update-pull-request-action@v1
       #   env:
