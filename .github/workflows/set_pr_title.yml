@@ -18,3 +18,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           title: "This title was set by a GitHub Action!"
+          update-pull-request-title-and-body: true
