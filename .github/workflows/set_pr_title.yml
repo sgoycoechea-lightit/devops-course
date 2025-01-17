@@ -3,7 +3,8 @@ run-name: ${{ github.actor }} is setting the title of the Pull Request 🚀
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
