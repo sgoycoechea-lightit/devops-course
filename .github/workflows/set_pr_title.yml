@@ -1,0 +1,34 @@
+name: Set PR Title
+run-name: ${{ github.actor }} is setting the title of the Pull Request 🚀
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  set_title:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Set PR Title
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo, number: pull_number } = context.issue;
+            await github.rest.pulls.update({
+              owner: owner,
+              repo: repo,
+              pull_number,
+              title: 'This title was set by a GitHub Action!'
+            });
+
+      # - uses: gr2m/create-or-update-pull-request-action@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     title: "This title was set by a GitHub Action!"
+      #     update-pull-request-title-and-body: true
