@@ -11,21 +11,18 @@ jobs:
   set_title:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
 
       - name: Set PR Title
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.rest.pulls.update({
               title: 'This title was set by a GitHub Action!'
-            }).then(function(result) {
-              core.info(result)
-            }).catch(function(error) {
-              core.info(error)
             })
 
       # - uses: gr2m/create-or-update-pull-request-action@v1
