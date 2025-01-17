@@ -22,7 +22,7 @@ jobs:
             await github.rest.pulls.update({
               owner: owner,
               repo: repo,
-              pull_number: number,
+              pull_number,
               title: 'This title was set by a GitHub Action!'
             });
 
